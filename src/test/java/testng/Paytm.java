@@ -94,7 +94,22 @@ public class Paytm {
 	    	}
 	    }
 	}
+	
 
+
+	@Test(priority = 3)
+	public void verifyInsurance() {
+		driver.findElement(By.xpath("//span[normalize-space()='Insurance/LIC Premium']")).click();
+		String actualvalue = driver.findElement(By.xpath("//div[contains(text(),'Pay Insurance Premium')]")).getText();
+		
+		Assert.assertEquals(actualvalue, "Pay Insurance Premium");
+		
+	  List<WebElement> links =	driver.findElements(By.xpath("//li[@class='_19rm']//a"));
+		
+	  for(WebElement link:links) {
+		  System.out.println(link.getText());
+	  }
+	}
 	
 	@AfterClass
 	public void tearDown() {
